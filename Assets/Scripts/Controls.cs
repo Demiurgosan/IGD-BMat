@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Controls : MonoBehaviour
@@ -15,7 +13,7 @@ public class Controls : MonoBehaviour
         { 
             Vector3 delta = Input.mousePosition - _prevMousePos;
             Player.position = new Vector3
-                (Player.position.x - delta.x * Speed, Player.position.y, Player.position.z);
+                (Player.position.x + delta.x * Speed, Player.position.y, Player.position.z);
         }
 
         if (Player.position.x > WallDistance) Player.position = new Vector3
