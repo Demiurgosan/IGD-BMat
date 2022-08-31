@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockEnc : MonoBehaviour
+public class Block : MonoBehaviour
 {
     public TextMesh Text;
     public int BlockHP;
+
+    private void Awake()
+    {
+        BlockHP = Random.Range(1, 11);
+    }
 
     private void Update()
     {

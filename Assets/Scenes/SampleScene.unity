@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 141691345}
   - component: {fileID: 141691344}
   m_Layer: 0
-  m_Name: Floor
+  m_Name: FloorPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 611953438}
+  m_Father: {fileID: 1954424601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &298164854 stripped
@@ -323,10 +323,11 @@ Transform:
   m_GameObject: {fileID: 611953437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 141691347}
+  - {fileID: 1954424601}
+  - {fileID: 1944645337}
   m_Father: {fileID: 1594021496}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -454,7 +455,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -620,7 +621,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -829,7 +830,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -886,7 +887,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -984,6 +985,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1310446178}
+  Floor: {fileID: 1954424601}
+  Finish: {fileID: 1944645337}
+  Block: {fileID: 5826597571850516846, guid: 5466e387399a20c4885dc195b0a0b77d, type: 3}
+  HPPoint: {fileID: 1094236483158127774, guid: f9f6726025b24604bad1061ef45652b6, type: 3}
+  StartPosition: {x: 0, y: 0.5, z: 8}
+  DistanceBtwBarriers: 5
 --- !u!4 &1594021496
 Transform:
   m_ObjectHideFlags: 0
@@ -1016,7 +1023,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1187,13 +1194,45 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944645332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.05, z: 20}
   m_LocalScale: {x: 10, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 611953438}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1954424600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954424601}
+  m_Layer: 0
+  m_Name: Floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954424601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954424600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 141691347}
+  m_Father: {fileID: 611953438}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5015434407109953843
 PrefabInstance:
@@ -1204,7 +1243,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 10186128353587959, guid: 5f43b88e43f03db4ba36f6f490aa5d1b, type: 3}
       propertyPath: m_LocalPosition.x
