@@ -9,7 +9,7 @@ public class Controls : MonoBehaviour
 
     void Update()
     {
-        if (Player.State != "Stop"&& Input.GetMouseButton(0))
+        if (Player.State != "Stop" && Input.GetMouseButton(0))
         { 
             Vector3 delta = Input.mousePosition - _prevMousePos;
             Player.transform.position = new Vector3

@@ -3,12 +3,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float PlayerSpeed;
-    private int _hp = 5;
+    private int _hp = 10;
+    private string _state = "Roll";
     public int DistBtwTail;
     public GameObject[] PTail;
     int CountOfPoints;
     Vector3[] waypoints;
-    public string State = "Roll";
 
     private void Awake()
     {
@@ -25,11 +25,11 @@ public class Player : MonoBehaviour
         {
             PTail[i].transform.position = waypoints[DistBtwTail*(i+1)];
         }
-        Debug.Log(_hp);
     }
 
     private void FixedUpdate()
     {
+
         for (int i = CountOfPoints - 1; i > 0; i--)
         {
             waypoints[i] = waypoints[i - 1];
@@ -44,12 +44,13 @@ public class Player : MonoBehaviour
         { 
             _hp += value;
             if (_hp >= 1 && _hp < 10) SetActiveTail(1);
-            if (_hp >= 10 && _hp < 20) SetActiveTail(2);
-            if (_hp >= 20 && _hp < 30) SetActiveTail(3);
-            if (_hp >= 30 && _hp < 40) SetActiveTail(4);
-            if (_hp >= 40 && _hp < 50) SetActiveTail(5);
-            if (_hp >= 50) SetActiveTail(6);
-            if (_hp <= 0) Debug.Log("You loose.");
+            else if (_hp >= 10 && _hp < 20) SetActiveTail(2);
+            else if (_hp >= 20 && _hp < 30) SetActiveTail(3);
+            else if (_hp >= 30 && _hp < 40) SetActiveTail(4);
+            else if (_hp >= 40 && _hp < 50) SetActiveTail(5);
+            else if (_hp >= 50) SetActiveTail(6);
+            else { State = "Stop"; Debug.Log("You loose.");}
+            
         }
     }
 
@@ -60,6 +61,21 @@ public class Player : MonoBehaviour
         for(int j = 0; j < i; j++)
         {
             PTail[j].SetActive(true);
+        }
+    }
+
+    public string State
+    {
+        get { return _state; }
+        set
+        {
+            if (value == "Roll") _state = "Roll";
+            if (value == "Stay") _state = "Stay";
+            if (value == "Stop")
+            {
+                _state = "Stop";
+
+            }
         }
     }
 }
