@@ -6,6 +6,6 @@ public class FinishReach : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Game.FinishLVL();
+        Game.PlayerWin();
     }
 }

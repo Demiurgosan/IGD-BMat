@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour
@@ -8,6 +9,7 @@ public class Game : MonoBehaviour
     public Transform Floor;
     public Transform Finish;
     public GameObject Block;
+
     public GameObject HPPoint;
     public GameObject WinScreen;
     public GameObject LooseScreen;
@@ -35,6 +37,7 @@ public class Game : MonoBehaviour
     }
     private void Update()
     {
+        LvlText.text = currentLVL.ToString();
         HPText.text = Player.HP.ToString();
     }
 
@@ -42,6 +45,12 @@ public class Game : MonoBehaviour
     {
         Player.State = "Stop";
         LooseScreen.SetActive(true);
+    }
+
+    internal void PlayerWin()
+    {
+        Player.State = "Stop";
+        WinScreen.SetActive(true);
     }
 
     public void Restart()
@@ -68,10 +77,25 @@ public class Game : MonoBehaviour
         LooseScreen.SetActive(false);
     }
 
-    internal void FinishLVL()
+    internal static void RestartGame()
     {
-        Player.State = "Stop";
-        Debug.Log("FINISH");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLvl()
+    {
+        currentLVL++;
+        difficalty++;
+        foreach(GameObject element in ArrayOfElements)
+        {
+            Destroy(element);
+        }
+        ArrayOfElements.Clear();
+        WinScreen.SetActive(false);
+        HPonLvlStart = Player.HP;
+        Player.transform.position = StartPosition;
+        Player.State = "Roll";
+        CreateLVL();
     }
 
     private void CreateLVL()
