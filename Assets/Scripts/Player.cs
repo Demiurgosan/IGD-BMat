@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public GameObject[] PTail;
     int CountOfPoints;
     Vector3[] waypoints;
+    public string State = "Roll";
 
     private void Awake()
     {
@@ -19,8 +20,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        transform.position = transform.position + new Vector3(0, 0, PlayerSpeed*Time.deltaTime);
-        for(int i = 0; i < PTail.Length; i++)
+        if (State == "Roll") transform.position = transform.position + new Vector3(0, 0, PlayerSpeed * Time.deltaTime);
+        for (int i = 0; i < PTail.Length; i++)
         {
             PTail[i].transform.position = waypoints[DistBtwTail*(i+1)];
         }
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
             if (_hp >= 30 && _hp < 40) SetActiveTail(4);
             if (_hp >= 40 && _hp < 50) SetActiveTail(5);
             if (_hp >= 50) SetActiveTail(6);
-            if (_hp <= 0) Loose();
+            if (_hp <= 0) Debug.Log("You loose.");
         }
     }
 
@@ -60,10 +61,5 @@ public class Player : MonoBehaviour
         {
             PTail[j].SetActive(true);
         }
-    }
-
-    public void Loose()
-    {
-        Debug.Log("You loose.");
     }
 }
