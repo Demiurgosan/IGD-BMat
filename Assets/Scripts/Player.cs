@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Game Game;
     public float PlayerSpeed;
     private int _hp = 10;
     private string _state = "Roll";
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
             else if (_hp >= 30 && _hp < 40) SetActiveTail(4);
             else if (_hp >= 40 && _hp < 50) SetActiveTail(5);
             else if (_hp >= 50) SetActiveTail(6);
-            else { State = "Stop"; Debug.Log("You loose.");}
+            else {Game.PlayerDied();}
             
         }
     }

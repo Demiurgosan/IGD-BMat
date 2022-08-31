@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class Game : MonoBehaviour
     public Transform Finish;
     public GameObject Block;
     public GameObject HPPoint;
+    public GameObject WinScreen;
+    public GameObject LooseScreen;
+    public Text LvlText;
+    public Text HPText;
 
     public Vector3 StartPosition;
     public int DistanceBtwBarriers;
@@ -15,7 +20,7 @@ public class Game : MonoBehaviour
     List<GameObject> ArrayOfElements = new List<GameObject>();
     int currentLVL=1;
     int difficalty=5;
-    int currentHP;
+    int HPonLvlStart;
 
     private void Awake()
     {
@@ -24,7 +29,25 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        LvlText.text = currentLVL.ToString();
         CreateLVL();
+        HPonLvlStart = Player.HP;
+    }
+    private void Update()
+    {
+        HPText.text = Player.HP.ToString();
+    }
+
+    internal void PlayerDied()
+    {
+        Player.State = "Stop";
+        LooseScreen.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        Player.HP = HPonLvlStart;
+        Player.transform.position = StartPosition;
     }
 
     internal void FinishLVL()
@@ -41,7 +64,7 @@ public class Game : MonoBehaviour
         {
             for(int j = -4; j < 5; j += 2)//элемент этапа
             {
-                if (Random.Range(0, 3) == 0) ;
+                if (Random.Range(0, 3) == 0) ;//ничего
                 else
                 {
                     GameObject Element = Instantiate(Block, transform);
@@ -53,7 +76,7 @@ public class Game : MonoBehaviour
             
         }
         //еда
-        for(int i = 2; i < difficalty+1; i++)//промежуток этапов
+        for(int i = 1; i < difficalty+1; i++)//промежуток этапов
         {
             for (int j = -4; j < 5; j += 2)//элемент промежутка
             {

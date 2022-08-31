@@ -19,7 +19,6 @@ public class Block : MonoBehaviour
         if (collision.collider.TryGetComponent(out Player player))
         {
             player.State = "Stay";
-            Debug.Log("On collision enter Block");
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -38,6 +37,5 @@ public class Block : MonoBehaviour
                 else player.State = "Roll";
             }
         }
-        Debug.Log("On collision stay Block");
     }
 }
