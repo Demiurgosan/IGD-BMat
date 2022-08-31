@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public TextMesh Text;
     public int BlockHP;
+    public TextMesh Text;
+    public int BlockHPatStart;
 
     private void Awake()
     {
         BlockHP = Random.Range(1, 11);
+        BlockHPatStart = BlockHP;
     }
 
     private void Update()
@@ -23,19 +25,29 @@ public class Block : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (BlockHP > 0)
+        if (collision.collider.TryGetComponent(out Player player))
         {
-            BlockHP--;
-            if (collision.collider.TryGetComponent(out Player player)) player.HP = -1;
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            if (collision.collider.TryGetComponent(out Player player))
+            if (player.HP > 0&& BlockHP>0)
             {
-                if (player.HP == 0) player.State = "Stop";
-                else player.State = "Roll";
+                BlockHP--;
+                player.HP = -1;
+            }
+            else if (player.HP <= 0)
+            {
+                gameObject.transform.position += new Vector3(0, 20, 0);
+                player.State = "Stop";
+            }
+            else
+            {
+                gameObject.transform.position += new Vector3(0, 20, 0);
+                player.State = "Roll";
             }
         }
+    }
+
+    public void Restore()
+    {
+        BlockHP = BlockHPatStart;
+        gameObject.transform.position -= new Vector3(0, 20, 0);
     }
 }

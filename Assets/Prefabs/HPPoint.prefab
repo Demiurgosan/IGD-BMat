@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPvalue: 1
   Text: {fileID: 1410349489251138325}
+  Iam: {fileID: 1094236483158127774}
 --- !u!1 &3947620341732859592
 GameObject:
   m_ObjectHideFlags: 0

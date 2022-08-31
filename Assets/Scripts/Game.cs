@@ -48,6 +48,24 @@ public class Game : MonoBehaviour
     {
         Player.HP = HPonLvlStart;
         Player.transform.position = StartPosition;
+        Player.State = "Roll";
+        foreach(GameObject element in ArrayOfElements)
+        {
+            if (element.transform.position.y > 10) 
+            {
+                if (element.TryGetComponent(out HPPoint hppoint))
+                {
+                    hppoint.Restore();
+                }
+                if (element.TryGetComponent(out Block block))
+                {
+                    block.Restore();
+                }
+            }
+            
+
+        }
+        LooseScreen.SetActive(false);
     }
 
     internal void FinishLVL()

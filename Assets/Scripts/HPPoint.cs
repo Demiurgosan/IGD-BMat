@@ -16,7 +16,11 @@ public class HPPoint : MonoBehaviour
         if(collision.collider.TryGetComponent(out Player player))
         {
             player.HP = HPvalue;
-            gameObject.SetActive(false);
+            gameObject.transform.position += new Vector3(0, 20, 0);
         }
+    }
+    public void Restore()
+    {
+        gameObject.transform.position -= new Vector3(0, 20, 0);
     }
 }

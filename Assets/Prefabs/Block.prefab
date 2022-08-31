@@ -208,5 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83ca3fa572719241bd6eebe366c85ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: {fileID: 5826597570562625614}
   BlockHP: 5
+  Iam: {fileID: 5826597571850516846}
+  Text: {fileID: 5826597570562625614}
