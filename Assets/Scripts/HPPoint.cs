@@ -17,6 +17,7 @@ public class HPPoint : MonoBehaviour
         {
             player.HP = HPvalue;
             gameObject.transform.position += new Vector3(0, 20, 0);
+            GetComponent<AudioSource>().Play();
         }
     }
     public void Restore()
