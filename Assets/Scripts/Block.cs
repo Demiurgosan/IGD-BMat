@@ -5,11 +5,18 @@ public class Block : MonoBehaviour
     public int BlockHP;
     public TextMesh Text;
     public int BlockHPatStart;
+    Renderer GraduationComp;
+    float _graduation;
 
     private void Awake()
     {
         BlockHP = Random.Range(1, 11);
         BlockHPatStart = BlockHP;
+        _graduation = (float)BlockHP / 10;
+        Debug.Log(_graduation);
+        GraduationComp = GetComponent<Renderer>();
+        GraduationComp.material.SetFloat(Shader.PropertyToID("_DangerOfBlock"), _graduation);
+        
     }
 
     private void Update()
