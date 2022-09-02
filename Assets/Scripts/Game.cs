@@ -8,8 +8,8 @@ public class Game : MonoBehaviour
     public Player Player;
     public Transform Floor;
     public Transform Finish;
+    public ParticleSystem FinishPS;
     public GameObject Block;
-
     public GameObject HPPoint;
     public GameObject WinScreen;
     public GameObject LooseScreen;
@@ -95,6 +95,7 @@ public class Game : MonoBehaviour
         HPonLvlStart = Player.HP;
         Player.transform.position = StartPosition;
         Player.State = "Roll";
+        FinishPS.Stop();
         CreateLVL();
     }
 
@@ -132,5 +133,6 @@ public class Game : MonoBehaviour
             }
         }
         Finish.position = new Vector3(0, 0.1f, (difficalty + 1) * 10);
+        FinishPS.transform.position = new Vector3(0, 0, (difficalty + 1) * 10);
     }
 }

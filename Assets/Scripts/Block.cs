@@ -41,6 +41,7 @@ public class Block : MonoBehaviour
             {
                 gameObject.transform.position += new Vector3(0, 20, 0);
                 player.State = "Roll";
+                GetComponent<AudioSource>().Play();
             }
         }
     }
